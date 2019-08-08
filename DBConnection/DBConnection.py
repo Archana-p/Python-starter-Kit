@@ -1,8 +1,10 @@
 import sqlite3
 conn = sqlite3.connect('test.db')
-class DBConnection():
+
+
+class DBConnection:
           
-    def createDB(self):
+    def create_db(self):
         #creation of table
         conn.execute('''CREATE TABLE PERSON
                    (ID INT PRIMARY KEY,
@@ -10,13 +12,13 @@ class DBConnection():
         PASSWORD PASSWORD);''')
         print("Table created")
      
-    def InsertRecordinDB(self):
+    def insert_record_in_db(self):
         #insert records in table
         conn.execute("INSERT INTO  PERSON(ID ,USERNAME,PASSWORD)VALUES(1,'pythonuser@gmail.com','password@123')")
         conn.commit()
         print("Record inserted successfully") 
     
-    def selectDataDB(self):
+    def select_data_db(self):
         data = conn.execute("SELECT ID,USERNAME,PASSWORD FROM PERSON")
         for row in data:
             username = row[1]
@@ -24,5 +26,5 @@ class DBConnection():
             return username ,password
         print("data display successfully")        
 
-    def closeConnetion(self):
+    def close_connetion(self):
         conn.close()

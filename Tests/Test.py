@@ -1,19 +1,19 @@
-from selenium import webdriver
+from Config import config
 import unittest
 import HtmlTestRunner
 from Tests.Login import LoginTest
-from Config import config
-
+from BrowserType.BrowserType import BrowserType
 
 
 class Test1(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(executable_path=config.CHROME_DRIVER_PATH)
-        cls.driver.get(config.APPLICATION_URL)
+        BrowserType.get_browser_value(cls, 'IE')
+        #cls.driver.get(config.APPLICATION_URL)
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
-        
+    
+    #called all the tests of login page from Login.py file
     def test_login_page(self):
         LoginTest.test_login_valid(self)
         LoginTest.test_search_valid_category(self)

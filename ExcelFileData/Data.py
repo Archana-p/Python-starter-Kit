@@ -3,6 +3,8 @@ import xlrd
 loc =("C:/Users/archanap/Documents/Practice Team work/data.xlsx")
 wb = xlrd.open_workbook(loc)
 sheet = wb.sheet_by_index(0)
+
+
 class Data():
                 
     def fetch_username(self):
