@@ -5,7 +5,7 @@ import traceback
 
 class URLNavigationException:
     
-    #this function handles the url navigation exceptions.
+    #this function handles the url navigation exceptions so the user can understand what type of exception occured.
     def handle_url_navigation_exception(self,url):
         http = urllib3.PoolManager()
         

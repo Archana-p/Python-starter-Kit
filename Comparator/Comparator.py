@@ -8,8 +8,9 @@ class comparator:
         logging.info("Actual text value ="+actual_text+"Expected text value =" +expected_text)
         try:
             if (actual_text==expected_text):
-                return True
                 logging.info("Text is matched exactly")
+                return True
+                
         except TimeoutException:
             logging.error("Text are not matching exactly")
     

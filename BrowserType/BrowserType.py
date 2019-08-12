@@ -1,4 +1,4 @@
-from Config import config
+from Config import Driver ,config
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
@@ -7,7 +7,7 @@ class BrowserType:
     
     #this function will setup the path for chrome browser
     def setup_chrome_webdriver(self):
-        self.driver = webdriver.Chrome(executable_path= config.CHROME_DRIVER_PATH)
+        self.driver = webdriver.Chrome(executable_path= Driver.CHROME_DRIVER_PATH)
         return self.driver
     
     #this function will setup the path for IE browser
@@ -23,12 +23,12 @@ class BrowserType:
         cap['ignoreZoomSetting'] = True
         cap['requireWindowFocus'] = True
         cap['INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS'] = True
-        self.driver = webdriver.Ie(executable_path=config.IE_DRIVER_PATH,desired_capabilities=cap)
+        self.driver = webdriver.Ie(executable_path=Driver.IE_DRIVER_PATH,desired_capabilities=cap)
         return self.driver
     
     #this function will setup the path for FireFox browser
     def setup_firefox_webdriver(self):
-        self.driver = webdriver.Firefox(executable_path=config.FIREFOX_DIRVER_PATH)
+        self.driver = webdriver.Firefox(executable_path=Driver.FIREFOX_DIRVER_PATH)
         return self.driver
         
     #this function will run test case in different browser browser_type is argument where we can pass type of browser we want   

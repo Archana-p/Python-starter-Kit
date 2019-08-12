@@ -22,3 +22,4 @@ class Locators:
     select_furniture_category_by_xpath = "//*[@id='nav-flyout-shopAll']/div[3]/div[10]/div[1]/div/a[3]"
     select_sofas_as_furniture_category_by_xpath = "//div[@class='left_nav browseBox']//ul[1]/li[1]/a[contains(text(),'Sofas & Couches')]"
     select_sofa_type_by_xpath = "//div[@id='leftNav']/ul[5]//input[@type='checkbox']"
+    

@@ -6,13 +6,15 @@ from selenium.common.exceptions import TimeoutException
 import logging
 
 
-class GenericFunction:
+class WebActions:
     
     
     def __init__(self,driver):
         self.driver = driver
     
     #this function will send value to text box argument value is some text and element is text box object where we are sending value
+    #value = "ABC" 
+    #element will be the locator 
     def send_value_to_textbox(self,value,element):
         try:
             element.send_keys(value)
@@ -20,7 +22,9 @@ class GenericFunction:
         except ElementNotInteractableException:
             logging.error("Element not found")
             
-    #this function will click on element where element is object on which we are going to perform click operation    
+    #this function will click on element where element is object on
+    # which we are going to perform click operation    
+    #element will be the locator of page
     def click_on_element(self,element): 
         try:
             element.click()
@@ -36,7 +40,8 @@ class GenericFunction:
         except TimeoutException:
             logging.error("wait Failed")   
     
-    #mouse hover action is performed by using this function where element is page obejct on which we are going to hover  
+    #mouse hover action is performed by using this function where element
+    #is page object on which we are going to hover  
     def hover_on_mouse_action(self,element):
         try:
             action = ActionChains(self.driver);

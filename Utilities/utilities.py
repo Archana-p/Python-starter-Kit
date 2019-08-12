@@ -9,55 +9,39 @@ import logging
 class Utilites:
     
     #this function is used to get current therad ID
+    #output format will be 60040
     def get_current_therad_id(self):
         try:
             return "Thread:"+ threading.currentThread().ident
             logging.info("current therad id return")
         except TimeoutException:
             logging.error("Current Thread ID not found")
-            
-  
-    def random_number_generator(self):
-        #it will generate random number between 1 to 1000
+    #**********************************************************************************************#
+    #it will generate random number between 1 to 1000        
+    #output of this function will be random number - 539 number vary each time
+    def random_number_generator(self):        
         try:
             random_number = random.randint(1,1000)
             return random_number
             logging.info("random number return")
         except ArithmeticError:
             logging.error("Random Number generation Failed")
-      
-    def convert_to_string(self,value):
-        #this function will convert object to string argument will be any datatype
+    #*********************************************************************************************#  
+    #this function will convert object to string argument will be any datatype
+    #value will be anything like integer ,float
+    def convert_to_string(self,value):      
         try:
             return str(value)
             logging.info("Object is converted to string")
         except ValueError:
             logging.error("Invalid argument is passed")
     
-    def convert_list_to_array(self,my_list):
-        #this function has input as list and output will be array
-        try:
-            array = []
-            for l in my_list:
-                array += l      
-            return array
-            logging.info("List is converted to array")
-        except TimeoutException:
-            logging.error("list is not converted into array")
     
-    
-    def convert_2D_array_to_list(self,input_array):
-        #this function will take 2D array as input and will retrun list in output
-        try:
-            my_list = input_array.tolist()
-            return  my_list
-            logging.info("2D array converted to list successfully")
-        except TimeoutException:
-            logging.error("Converion of 2D array to list failed")
-    
-    
+    #******************************************************************************#
+    #get current directory path for python library 
+    #output of this function will be 'C:\\Users\\archanap\\AppData\\Local\\Programs\\Python\\Python37-32'
     def get_current_dir_path(self):
-        #get current directory path
+       
         try:
             dirpath = os.getcwd()
             logging.info("Current Directory is:"+dirpath)
@@ -65,8 +49,10 @@ class Utilites:
         except:
             logging.error("Path not found")
     
-    def get_current_dir_folder_name(self):
-        #get current folder name
+    #******************************************************************************#
+    ##get current folder name where python library is installed
+    #output of this function will be 'Python37-32' 
+    def get_current_dir_folder_name(self):        
         try:
             dirpath = os.getcwd()
             foldername = os.path.basename(dirpath)
@@ -74,8 +60,9 @@ class Utilites:
             return foldername
         except:
             logging.error("Path not found")
-    
-    #this function is used to scroll down window by using javascript       
+            
+    #******************************************************************************#
+    #this function is used to scroll down window by using JavaScript       
     def scroll_down_window(self):
         try:
             driver = self.driver

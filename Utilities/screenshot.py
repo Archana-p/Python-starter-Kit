@@ -1,21 +1,13 @@
-from Config import config
-from Screenshot import Screenshot_Clipping
-from DateTimeConversion.DateAndTime import DateAndTime
-from selenium.common.exceptions import TimeoutException
-from Utilities.utilities import Utilites
-from Utilities.Log import Log
+import mss
+import mss.tools
 
 
-class Screenshot:
-    
-    def take_screenshot(self, driver):
-        try:
-            driver = self.driver
-            image_path = config.IMAGE_PATH
-            ob=Screenshot_Clipping.Screenshot()
-            image_name = DateAndTime.get_current_date_and_time(self)
-            image_name = Utilites.convert_to_string(self, image_name)
-            ob.full_Screenshot(driver, save_path=image_path, image_name= image_name+'.png')
-            Log.write_info_to_log_file(self,"screenshot taken successfully")
-        except TimeoutException:
-            Log.write_errors_to_log_file(self, "screenshot is not taken properly")
+class screenshot:
+    #this function will capture the full screen screenshot just called this function where needed
+    def capture_screenshot(self):
+        with mss.mss() as sct:
+            # The screen part to capture           
+            monitor = {"top": 160, "left": 160, "width": 160, "height": 135}            
+            output = "C:/Users/archanap/Documents/Practice Team work/Python POC/POC_updated/Images/sct-{top}x{left}_{width}x{height}.png".format(**monitor)        
+            filename = sct.shot(mon=-1, output=output)
+            print(filename)
