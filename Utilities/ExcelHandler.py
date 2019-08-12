@@ -1,6 +1,6 @@
 import pandas
 from pandas import DataFrame
-import logging
+from Utilities.Log import Log
 
 class ExcelHandler:
     
@@ -16,9 +16,9 @@ class ExcelHandler:
         try:
             data_frame = pandas.read_excel(excle_file_path,sheet_name=sheet_name)
             return data_frame
-            logging.info("Data read successfully from excel file")  
+            Log.write_info_to_log_file(self,"Data read successfully from excel file")  
         except FileNotFoundError:
-            logging.error("File Not Found") 
+            Log.write_errors_to_log_file(self,"File Not Found") 
             
     #***********************************************************************************************#
     #this function will read certain columns data from excel file
@@ -35,9 +35,9 @@ class ExcelHandler:
         try:
             data_frame= pandas.read_excel(excle_file_path,sheet_name= sheet_name,usecols=columns)
             return data_frame.head()
-            logging.info("specific rows read successfully from excel file")
+            Log.write_info_to_log_file(self,"specific rows read successfully from excel file")
         except FileNotFoundError:
-            logging.error("File not found")
+            Log.write_errors_to_log_file(self,"File not found")
             
     #***********************************************************************************************#
     def write_data_to_excle_file(self,excle_file_path,excle_file_data,excle_file_column=[],excle_file_sheet_name):
@@ -51,6 +51,6 @@ class ExcelHandler:
             data_frame = DataFrame(excle_file_data, columns= excle_file_column)
             data_frame= data_frame.to_excle (excle_file_path, sheet_name = excle_file_sheet_name,index = False)
             return data_frame
-            logging.info("Data written successfully in excel file")
+            Log.write_info_to_log_file(self,"Data written successfully in excel file")
         except IOError:
-            logging.error("Data writing failed in excel file")
+            Log.write_errors_to_log_file(self,"Data writing failed in excel file")

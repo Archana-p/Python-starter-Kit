@@ -3,7 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import ElementNotVisibleException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
-import logging
+from Utilities.Log import Log
 
   
 class Waits: 
@@ -16,10 +16,10 @@ class Waits:
     def wait_for_element_presence(self,locator_method ,locator) :
         try:
             element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((locator_method, locator)))
-            logging.info("Element is present")
+            Log.write_info_to_log_file(self,"Element is present")
             return element           
         except TimeoutException:
-            logging.error("Element is not present")
+            Log.write_info_to_log_file(self, "Element is not present")
     
     #********************************************************************************************#
     #this function  allows waiting to find a specific and functionally visible element the specified locator will return.
@@ -27,10 +27,10 @@ class Waits:
     def wait_for_element_visiblity(self,locator_method,locator):
         try:
             element = WebDriverWait(self.driver,10).until(EC.visibility_of_element_located(locator_method,locator))
-            logging.info("Element is visible")
+            Log.write_info_to_log_file(self,"Element is visible")
             return element            
         except ElementNotVisibleException:
-            logging.error("Element not visible")
+            Log.write_errors_to_log_file(self,"Element not visible")
             
     #********************************************************************************************#
     #this function allows waiting for an element which is invisible or not in the DOM.
@@ -38,11 +38,11 @@ class Waits:
     def wait_for_element_invisiblity(self,locator_method,locator):
         try:
             element = WebDriverWait(self.driver,10).until(EC.invisibility_of_element_located(locator_method,locator))
-            logging.info("Element Found")
+            Log.write_info_to_log_file(self,"Element Found")
             return element
             
         except TimeoutError:
-            logging.error("Element not found Timeout error occured")
+            Log.write_errors_to_log_file(self,"Element not found Timeout error occured")
             
     #********************************************************************************************#  
     #this function allows waiting for an element to be clicked
@@ -50,10 +50,10 @@ class Waits:
     def wait_for_element_clickablity(self,locator_method,locator):
         try:
             element = WebDriverWait(self.driver,10).until(EC.element_to_be_clickable(locator_method,locator))
-            logging.info("Element is present")
+            Log.write_info_to_log_file(self,"Element is present")
             return element       
         except NoSuchElementException:
-            logging.error("Element not Found Exception")
+            Log.write_errors_to_log_file(self,"Element not Found Exception")
             
     #********************************************************************************************#
     #this function allows waiting for an element unless text is not found
@@ -61,10 +61,10 @@ class Waits:
     def wait_for_element_to_find_by_text(self,locator_method,locator,inner_text):
         try:
             element=WebDriverWait(self.driver,10).unit(EC.text_to_be_present_in_element(locator_method,locator,inner_text))
-            logging.info("Element is present")
+            Log.write_info_to_log_file(self,"Element is present")
             return element         
         except:
-            logging.error("Element Text Not Found")
+            Log.write_errors_to_log_file(self,"Element Text Not Found")
             
     #********************************************************************************************#
     #this function allows waiting for an element unless alter is not present
@@ -73,7 +73,7 @@ class Waits:
             myElem = WebDriverWait(self.driver,10).until(EC.alert_is_present())
             myElem.switch_to_alert().accept()
         except TimeoutException:
-            logging.error("Alert not appear")
+            Log.write_errors_to_log_file(self,"Alert not appear")
             
             
     

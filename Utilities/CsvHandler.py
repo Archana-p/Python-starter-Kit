@@ -1,6 +1,6 @@
 import pandas
 from pandas import DataFrame
-import logging
+from Utilities.Log import Log
 
 
 class CsvHandler:
@@ -17,10 +17,10 @@ class CsvHandler:
         try:
             
             data = pandas.read_csv(csv_file_path, index_col=0)
-            logging.info("Data read successfully from file")
+            Log.write_info_to_log_file(self,"Data read successfully from file")
             return data
         except FileNotFoundError:
-            logging.error("Data reading from csv file failed")
+            Log.write_errors_to_log_file(self,"Data reading from csv file failed")
     
     #*****************************************************************************************#
     # example for csv_file_data 
@@ -36,11 +36,11 @@ class CsvHandler:
             data_frame = DataFrame(csv_file_data, columns= csv_file_columns)
             data_frame= data_frame.to_csv (r'csv_file_name', index = None, header=True) 
             # here you have to write path, where result file will be stored
-            logging.info("data written successfully on csv file")
+            Log.write_info_to_log_file(self, "data written successfully on csv file")
             return data_frame
             #open file and data will be present in file
         except IOError:
-            logging.error("Data writing failed")
+            Log.write_errors_to_log_file(self,"Data writing failed")
     
     #*****************************************************************************************#
     
@@ -55,7 +55,7 @@ class CsvHandler:
             data = pandas.read_csv(csv_file_name)
             return data.head()
         except FileNotFoundError:
-            logging.error("Data reading from csv file failed")
+            Log.write_errors_to_log_file(self,"Data reading from csv file failed")
     
     #*****************************************************************************************#
     #this function is used to read certain columns from csv file
@@ -68,10 +68,10 @@ class CsvHandler:
         try:
             
             data_frame = pandas.read_csv(csv_file_path,usecols=columns)
-            logging.info("specific columns read from csv file")
+            Log.write_info_to_log_file(self,"specific columns read from csv file")
             return data_frame.head()           
         except FileNotFoundError:
-            logging.error("File not found")
+            Log.write_errors_to_log_file(self,"File not found")
             
     
     #*****************************************************************************************#
@@ -84,7 +84,7 @@ class CsvHandler:
         try:
             #number_of_rows value is 8 then it will return first 8 rows from cvs file
             data_frame =pandas.read_csv(csv_file_path,nrows=number_of_rows)
-            logging.info("specific rows read from csv file")
+            Log.write_info_to_log_file(self,"specific rows read from csv file")
             return data_frame           
         except FileNotFoundError:
-            logging.error("File not Found")
+            Log.write_errors_to_log_file(self, "File not Found")
