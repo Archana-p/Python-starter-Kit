@@ -1,6 +1,4 @@
 from Locators.Locators import Locators
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
@@ -41,6 +39,7 @@ class HomePage:
             action.move_to_element(element).perform();
             myElem = Waits.wait_for_element_presence(self, By.XPATH, Locators.Logout_id)
             #myElem = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, Locators.Logout_id)))
+            WebActions.wait(self)
             myElem.click()
             Log.write_info_to_log_file(self,"sign out from website successfully")
         except TimeoutException:

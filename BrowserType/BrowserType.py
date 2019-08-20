@@ -23,7 +23,10 @@ class BrowserType:
         cap['ignoreZoomSetting'] = True
         cap['requireWindowFocus'] = True
         cap['INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS'] = True
-        self.driver = webdriver.Ie(executable_path=Driver.IE_DRIVER_PATH,desired_capabilities=cap)
+        #system.setProperty("webdriver.ie.driver",Driver.IE_DRIVER_PATH)
+        self.driver = webdriver.Ie(executable_path= r'C:/Users/archanap/Documents/Practice Team work/Python POC/POC_updated/Drivers/IEDriverServer_x64_3.141.59/IEDriverServer.exe',desired_capabilities=cap)
+        #self.driver = webdriver.Remote(command_executor='http://127.0.0.1:5555',
+        # desired_capabilities=cap)
         return self.driver
     
     #this function will setup the path for FireFox browser

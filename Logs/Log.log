@@ -9,7 +9,7 @@ INFO:root:Password value entered successfully
 INFO:root:Clicked successfully
 INFO:root:clicked on login button successfully
 INFO:root:C:/Users/archanap/Documents/Practice Team work/Python POC/POC_updated/Images/sct-160x160_160x135.png
-INFO:root:element is selected from dropdown
+ERROR:root:Element not found
 INFO:root:keyboard key is pressed
 INFO:root:category selected from drop down
 INFO:root:wait for five seconds
@@ -32,4 +32,5 @@ INFO:root:Clicked successfully
 INFO:root:Navigate to Home Page successfully
 INFO:root:wait for five seconds
 INFO:root:Element is present
+INFO:root:wait for five seconds
 INFO:root:sign out from website successfully

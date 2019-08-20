@@ -17,7 +17,7 @@ class SearchproductTest():
         mouse_action = WebActions(self.driver)
         waits = Waits(driver)
         #WebActions.wait(self)
-        element = self.driver.find_element_by_id("nav-link-shopall")
+        self.driver.find_element_by_id("nav-link-shopall")
         WebActions.wait(self)
         element = waits.wait_for_element_presence(By.ID, "nav-link-shopall")
         mouse_action.hover_on_mouse_action(element)

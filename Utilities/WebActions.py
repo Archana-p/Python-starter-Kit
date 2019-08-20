@@ -35,7 +35,7 @@ class WebActions:
     #this functions is used to apply some wait in between the functions  
     def wait(self):
         try:
-            time.sleep(5) 
+            time.sleep(10) 
             Log.write_info_to_log_file(self,"wait for five seconds")  
         except TimeoutException:
             Log.write_errors_to_log_file(self,"wait Failed")   
