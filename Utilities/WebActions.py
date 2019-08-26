@@ -33,9 +33,9 @@ class WebActions:
             Log.write_errors_to_log_file(self,"Element not found to perform click action")
     
     #this functions is used to apply some wait in between the functions  
-    def wait(self):
+    def wait(self,time_in_seconds):
         try:
-            time.sleep(10) 
+            time.sleep(time_in_seconds) 
             Log.write_info_to_log_file(self,"wait for five seconds")  
         except TimeoutException:
             Log.write_errors_to_log_file(self,"wait Failed")   
@@ -50,7 +50,7 @@ class WebActions:
         except ElementNotInteractableException:
             Log.write_errors_to_log_file(self,"Element not found for hover action")
         
-    #this function will select the element from drop down by using value .Element is drop           down locator
+    #this function will select the element from drop down by using value .Element is dropdown locator
     def select_element_from_dropdown_by_value(self,element,value):
         try:
             s1 = Select(self.driver.find_element_by_id(element))
@@ -70,24 +70,27 @@ class WebActions:
     #this function will check if element is selected or not where element is object that we want to select
     def check_element_selected(self,element):
         try:
-            element.is_selected()
+            element_status = element.is_selected()
             Log.write_info_to_log_file(self, "element is selected")
+            return element_status
         except ElementNotInteractableException:
             Log.write_errors_to_log_file(self,"Element is not selected")
             
     #this function will check if element is displayed or not where element is page object
     def check_element_displayed(self,element):
         try:
-            element.is_displayed()
+            element_status = element.is_displayed()
             Log.write_info_to_log_file(self,"Element is displayed")
+            return element_status
         except ElementNotInteractableException:
             Log.write_errors_to_log_file(self,"Element is not displayed")
             
     #this function will check if element is enabled or not where element is page object
     def check_element_enabled(self,element):
         try:
-            element.is_enabled()
+            element_status = element.is_enabled()
             Log.write_info_to_log_file(self,"Element is enabled")
+            return element_status
         except ElementNotInteractableException:
             Log.write_errors_to_log_file(self,"Element not found")
                             
@@ -107,7 +110,7 @@ class WebActions:
         except:
             Log.write_errors_to_log_file(self,"Page refresh failed")
     
-    #this function will switch the window
+    #this function will switch the window between two window
     def switch_window(self,window_handle):
         try:
             self.driver.switch_to_window(window_handle)
@@ -118,14 +121,14 @@ class WebActions:
     #this function is used to extract the text from element   
     def get_text(self,element):
         try:
-            element.text()
+            return element.text()
         except ElementNotInteractableException:
             Log.write_errors_to_log_file(self, "Text is not present")
     
     #this function is used to extract the  attribute value from element   
     def get_attribute_value(self,element,attr_name):
         try:
-            element.get_attribute_value(attr_name)
+            return element.get_attribute_value(attr_name)
         except ElementNotInteractableException:
             Log.write_errors_to_log_file(self,"Attribute value is not present")
     
@@ -133,7 +136,7 @@ class WebActions:
     def get_element_size(self,element):
         try:
             #output will be in the form of dict {hight:100,width:200}
-            element.get_size()
+            return element.get_size()
         except ElementNotInteractableException:
             Log.write_errors_to_log_file(self,"element not found")
     

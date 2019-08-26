@@ -8,7 +8,7 @@ from BrowserType.BrowserType import BrowserType
 class Test1(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        BrowserType.get_browser_value(cls, 'FireFox')
+        BrowserType.get_browser_value(cls, config.CHROME)
         #cls.driver.get(config.APPLICATION_URL)
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()

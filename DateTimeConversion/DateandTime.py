@@ -6,6 +6,7 @@ from selenium.common.exceptions import TimeoutException
 class DateAndTime:
     
     #this function will return current time in milli seconds output will be  current time in (E.g. 1565333087245) in millis
+    #output will be in integer format
     @staticmethod
     def get_current_time_in_millis(self):
         try:
@@ -16,6 +17,7 @@ class DateAndTime:
             logging.error("current time is not converted into millis")
     
     #this function will written current date and time and format of output will be '09/08/2019 12:16:03'
+    #output will be in string format
     @staticmethod
     def get_current_date_and_time(self):
         try:
@@ -27,6 +29,7 @@ class DateAndTime:
             logging.error("output for current date and time is not getting")
     
     #this function will written current date and time in different format and output of this function will be 'August 09,2019 12:16:03'
+    #output will be in string format
     @staticmethod
     def get_current_date_and_time_in_different_format(self):
         try:

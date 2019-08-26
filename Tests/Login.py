@@ -35,7 +35,7 @@ class LoginTest:
     def test_search_valid_category(self):
         driver = self.driver
         search_product = SearchproductTest(driver)
-        WebActions.wait(self)
+        WebActions.wait(self,10)
         search_product.shopByCateogry()
         search_product.select_sofas_as_furniture_cateogry()
         search_product.select_sofas_by_type()
@@ -43,11 +43,11 @@ class LoginTest:
     #this test case perform log out functionality on Amazon page   
     def test_valid_logout(self):
         driver = self.driver
-        WebActions.wait(self)
+        WebActions.wait(self,10)
         homepage = HomePage(driver)
         homepage.checkOrders()
         homepage.navigatebacktoHomepage()
-        WebActions.wait(self)
+        WebActions.wait(self,10)
         homepage.signoutfrompage()  
         #now login by using fetching data from DB
         #data = DBConnection()

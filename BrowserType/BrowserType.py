@@ -24,7 +24,7 @@ class BrowserType:
         cap['requireWindowFocus'] = True
         cap['INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS'] = True
         #system.setProperty("webdriver.ie.driver",Driver.IE_DRIVER_PATH)
-        self.driver = webdriver.Ie(executable_path= r'C:/Users/archanap/Documents/Practice Team work/Python POC/POC_updated/Drivers/IEDriverServer_x64_3.141.59/IEDriverServer.exe',desired_capabilities=cap)
+        self.driver = webdriver.Ie(executable_path= r'../Python POC/POC_updated/Drivers/IEDriverServer_x64_3.141.59/IEDriverServer.exe',desired_capabilities=cap)
         #self.driver = webdriver.Remote(command_executor='http://127.0.0.1:5555',
         # desired_capabilities=cap)
         return self.driver
@@ -34,20 +34,18 @@ class BrowserType:
         self.driver = webdriver.Firefox(executable_path=Driver.FIREFOX_DIRVER_PATH)
         return self.driver
         
-    #this function will run test case in different browser browser_type is argument where we can pass type of browser we want   
+    #this funcation will take browser type as value and initiated the browser 
+    #browser type value will be 'Chrome','IE','FireFox'
     def get_browser_value(self,browser_type):      
         if browser_type == 'Chrome':
             self.driver = BrowserType.setup_chrome_webdriver(self)
             self.driver.get(config.APPLICATION_URL)
-            #return self.driver
         elif browser_type == 'IE':
             self.driver = BrowserType.setup_IE_webdriver(self)
             self.driver.get(config.APPLICATION_URL)
-            #return self.driver
         elif browser_type == 'FireFox':
             self.driver = BrowserType.setup_firefox_webdriver(self)
             self.driver.get(config.APPLICATION_URL)
-            #return self.driver
         else:
             print("Invalid Value")       
             

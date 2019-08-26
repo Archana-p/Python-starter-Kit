@@ -68,6 +68,7 @@ class Waits:
             
     #********************************************************************************************#
     #this function allows waiting for an element unless alter is not present
+    #alter will be present after wait
     def wait_for_element_to_alert_is_present(self):
         try: 
             myElem = WebDriverWait(self.driver,10).until(EC.alert_is_present())

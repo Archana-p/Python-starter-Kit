@@ -14,7 +14,7 @@ cursor = mydb.cursor()
 
 class MySql:
     
-    #this function will create table for user
+    #this function will create  ,drop table for user
     #input will be sql query for creation of table
     #e.g query = """CREATE TABLE EMPLOYEE (
     #    FIRST_NAME  CHAR(20) NOT NULL,
@@ -22,103 +22,45 @@ class MySql:
     #     AGE INT,  
     #     SEX CHAR(1),
     #     INCOME FLOAT )"""
-    def create_table(self,query):
-        try:
-            cursor.execute(query)
-            Log.write_info_to_log_file(self, "Created table successfully")
-        except TimeoutException:
-            Log.write_errors_to_log_file(self, "Error while creating table")
-            
-        #disconnect from server
-        mydb.close()    
-        
-    #*************************************************************************************************************#
-    #this function will drop the table if it exists
     #input will be sql query for dropping table
-    #cursor.execute("DROP TABLE IF EXISTS EMPLOYEE")
-    def drop_table(self,query):
+    #cursor.execute("DROP TABLE IF EXISTS EMPLOYEE"     
+    
+    def execute_query_on_table(self,query,msg):
         try:
             cursor.execute(query)
-            Log.write_info_to_log_file(self, "Drop table successfully")
-        except TimeoutException :
-            Log.write_errors_to_log_file(self, "Error while dropping table")
+            Log.write_info_to_log_file(self,msg)
+        except TimeoutException:
+            Log.write_errors_to_log_file(self, msg)
             
-        #disconnect from server    
-        mydb.close()       
-        
+        #disconnect from server   
+        mydb.close()   
+               
     #*************************************************************************************************************#
-    #this function will insert the record in db 
-    #input will be sql query 
+    #this function will insert ,delete and updated the record in db 
+    #input will be sql query for insert records
     ## Prepare SQL query to INSERT a record into the database.
     #query = "INSERT INTO EMPLOYEE(FIRST_NAME, \
     #   LAST_NAME, AGE, SEX, INCOME) \
     #   VALUES ('%s', '%s', '%d', '%c', '%d' )" % \
     #   ('Mac', 'Mohan', 20, 'M', 2000)
-    def insert_record_in_table(self,query):
-        try:
-            # Execute the SQL command
-            cursor.execute(query)
-            # Commit your changes in the database
-            Log.write_info_to_log_file(self, "Records inserted into database")
-            mydb.commit()
-        except TimeoutException:
-            # Rollback in case there is any error
-            mydb.rollback()
-            Log.write_errors_to_log_file(self, "Error while inserting records in DB")
-            
-        #disconnect from server   
-        mydb.close()
     #***********************************************************************************#
-    #this function will update the records from db
-    #input will be sql query 
     ## Prepare SQL query to UPDATE required records
     #query = "UPDATE EMPLOYEE SET AGE = AGE + 1
     #                     WHERE SEX = '%c'" % ('M')
-    def update_record_in_table(self,query):
+    #query = "DELETE FROM EMPLOYEE WHERE AGE > '%d'" % (20)   
+    def execute_query_on_records_from_DB(self,query,msg):
         try:
             #Execute the SQL command
             cursor.execute(query)
-            #commit your changes in the database
-            Log.write_info_to_log_file(self, "updated record successfully")
+            Log.write_info_to_log_file(self,msg)
             mydb.commit()
         except TimeoutException:
             #rollback in case there is any error
             mydb.rollback()
-            Log.write_errors_to_log_file(self, "Error while updating records")
-    
+            Log.write_errors_to_log_file(self, msg)  
+            
         mydb.close()
-    
-    #*************************************************************************************************************#
-    #this function will delete the records from table 
-    #input will be sql query
-    #query = "DELETE FROM EMPLOYEE WHERE AGE > '%d'" % (20)
-    def delete_record_from_table(self,query):
-        try:
-            #Execute the SQL command
-            cursor.execute(query)
-            #commit your changes in the database
-            Log.write_info_to_log_file(self, "deleted records successfully")
-            mydb.commit()
-        except TimeoutException:
-            #rollback in case there is any error
-            mydb.rollback()
-            Log.write_errors_to_log_file(self, "Error occured while deleting record")
-    
-        mydb.close()
-    
-    
-    #*************************************************************************************************************#
-    #this function will select records from table and input will be sql query 
-    #query = ("SELECT first_name, last_name, hire_date FROM employees "
-    #    "WHERE hire_date BETWEEN %s AND %s")
-    def select_record_from_table(self,query):
-        try:
-            cursor.execute(query)
-            Log.write_info_to_log_file(self, "Select records from DB")
-            mydb.commit()
-        except TimeoutException:
-            Log.write_errors_to_log_file(self, "Error occurred while selecting records from DB")
-        mydb.close() 
+        
     #*************************************************************************************************************#
     #In case the number of rows in the table is small, you can use the  fetchall() method to fetch all rows from the database table
     #input will be query = "select * from books"

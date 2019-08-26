@@ -39,7 +39,7 @@ class HomePage:
             action.move_to_element(element).perform();
             myElem = Waits.wait_for_element_presence(self, By.XPATH, Locators.Logout_id)
             #myElem = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, Locators.Logout_id)))
-            WebActions.wait(self)
+            WebActions.wait(self,10)
             myElem.click()
             Log.write_info_to_log_file(self,"sign out from website successfully")
         except TimeoutException:

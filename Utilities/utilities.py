@@ -12,18 +12,18 @@ class Utilites:
     #output format will be 60040
     def get_current_therad_id(self):
         try:
-            return "Thread:"+ threading.currentThread().ident
             Log.write_info_to_log_file(self,"current therad id return")
+            return "Thread:"+ threading.currentThread().ident           
         except TimeoutException:
             Log.write_errors_to_log_file(self,"Current Thread ID not found")
     #**********************************************************************************************#
     #it will generate random number between 1 to 1000        
     #output of this function will be random number - 539 number vary each time
-    def random_number_generator(self):        
+    def random_number_generator(self,start_number,end_number):        
         try:
-            random_number = random.randint(1,1000)
-            return random_number
+            random_number = random.randint(start_number,end_number)
             Log.write_info_to_log_file(self,"random number return")
+            return random_number          
         except ArithmeticError:
             Log.write_errors_to_log_file(self,"Random Number generation Failed")
     #*********************************************************************************************#  
@@ -31,8 +31,8 @@ class Utilites:
     #value will be anything like integer ,float
     def convert_to_string(self,value):      
         try:
-            return str(value)
             Log.write_info_to_log_file(self,"Object is converted to string")
+            return str(value)           
         except ValueError:
             Log.write_errors_to_log_file(self,"Invalid argument is passed")
     
