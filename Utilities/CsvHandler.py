@@ -13,6 +13,7 @@ class CsvHandler:
     #2       Xyz
     #3       qwe
     #it will read all the data from csv file stored in data variable
+    #methods are available which can be used  on data frame as per the requirements
     def read_data_from_csv_file(self,csv_file_path):
         try:
             
@@ -30,6 +31,7 @@ class CsvHandler:
         #called : data_frame = DataFrame(csv_file_data,columns= csv_file_columns)
         #called :data_frame = data_frame.to_csv('C:/Users/archanap/Documents/Practice Team work/sample.csv',index=None,header=True)
         #output: data will be written in csv file open the file and check the data make sure will running this function csv file will be closed .
+        #methods are available which can be used  on data frame as per the requirements
     def write_data_to_csv_file(self,csv_file_data,csv_file_name,csv_file_columns =[]):  
         
         try:
@@ -49,6 +51,7 @@ class CsvHandler:
     #Input:e.g data = pandas.read_csv('sample.csv')
     #output : Number   Name
     #    0       4   john
+    #methods are available which can be used  on data frame as per the requirements
     def read_csv_file_from_harddrive(self,csv_file_name):
         try:
             
@@ -64,6 +67,7 @@ class CsvHandler:
     #        Name
     #    0    john
     #    1    Maddy
+    #methods are available which can be used  on data frame as per the requirements
     def read_certain_columns_from_csv_file(self,csv_file_path,columns=[]):
         try:
             
@@ -80,6 +84,7 @@ class CsvHandler:
     #output of data_frame will be  Number  Name
     #                       0       4  john
     #it will written only one row as i provide row count = 1 
+    #methods are available which can be used  on data frame as per the requirements
     def read_certain_rows_from_csv_file(self,csv_file_path,number_of_rows):
         try:
             #number_of_rows value is 8 then it will return first 8 rows from cvs file

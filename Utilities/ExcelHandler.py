@@ -11,7 +11,7 @@ class ExcelHandler:
     #        Number   Name
     # 0       1   john
     # 1       2  Maddy
-    
+    #methods are available which can be used  on data frame as per the requirements
     def read_data_from_excel_file(self,excle_file_path,sheet_name):
         try:
             data_frame = pandas.read_excel(excle_file_path,sheet_name=sheet_name)
@@ -29,6 +29,7 @@ class ExcelHandler:
     #       Name
     #    0   john
     #   1    Maddy
+    #methods are available which can be used  on data frame as per the requirements
     def read_certain_columns_from_excel_file(self,excle_file_path,sheet_name,columns=[]):
         
         #columns array contains the name of the columns which need to read from excel File
@@ -47,6 +48,7 @@ class ExcelHandler:
         #input:data_frame = DataFrame(excel_file_data,columns=['Number','Name'])
         #input:data_frame =data_frame.to_excel('C:/Users/archanap/Documents/Practice Team work/sample.xlsx','Sample',index = False)
         #Output:Open the file and check data will be entered in file make sure while doing writing operation file will be closed or else permission denied error will occured
+        #methods are available which can be used  on data frame as per the requirements
         try:
             data_frame = DataFrame(excle_file_data, columns= excle_file_column)
             data_frame= data_frame.to_excle (excle_file_path, sheet_name = excle_file_sheet_name,index = False)
